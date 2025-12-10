@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('farms', function (Blueprint $table) {
             $table->id();
+            $table->integer('company_id');
+            $table->string('name');
+            $table->string('location_data');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
