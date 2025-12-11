@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id');
+            $table->date('date');
+            $table->string('field_id');
+            $table->string('status')->nullable();
+            $table->string('remarks')->nullable();
+            $table->string('image_url');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

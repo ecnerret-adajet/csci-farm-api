@@ -11,14 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('farm_activity_logs', function (Blueprint $table) {
+        Schema::create('fields', function (Blueprint $table) {
             $table->id();
-            $table->string('farm_activity_id');
-            $table->string('user_id');
-            $table->date('date');
-            $table->integer('mandays_accomplished');
-            $table->string('image_url');
-            $table->string('remarks')->nullable();
+            $table->integer('cluster_id');
+            $table->string('field_number');
+            $table->string('area');
+            $table->string('plant');
+            $table->string('variety');
+            $table->string('fan');
+            $table->date('dopR');
+            $table->string('assigned_to');
+            $table->string('fertilizer');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('farm_activity_logs');
+        Schema::dropIfExists('fields');
     }
 };
