@@ -4,8 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Cluster;
+use App\Models\FarmActivityLog;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Field extends Model
 {
@@ -54,5 +56,9 @@ class Field extends Model
     public function cluster()
     {
         return $this->belongsTo(Cluster::class);
+    }
+
+    public function farmActivityLog(){
+        return $this->hasMany(FarmActivityLog::class);
     }
 }

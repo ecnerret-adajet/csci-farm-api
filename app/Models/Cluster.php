@@ -34,6 +34,6 @@ class Cluster extends Model
 
     public function farm()
     {
-        return $this->belongsTo(Farm::class);
+        return $this->belongsTo(Farm::class)->select('id', 'name');
     }
 }
