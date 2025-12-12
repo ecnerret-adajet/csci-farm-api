@@ -4,8 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Company;
+use App\Models\Cluster;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Farm extends Model
 {
@@ -35,6 +37,10 @@ class Farm extends Model
 
     public function company()
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Company::class)->select('id', 'name');
+    }
+
+    public function cluster(){
+        return $this->hasMany(Cluster::class);
     }
 }
