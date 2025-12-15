@@ -31,4 +31,8 @@ class AppLoginController extends Controller
         return response()->json(['error' => 'Unauthorized'], 401);
     }
 
+    public function logout(Request $request){
+        $request->user()->tokens()->delete();
+        return response()->json(['message' => 'Logout successfully'], 200);
+    }
 }

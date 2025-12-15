@@ -66,7 +66,7 @@ class FarmActivity extends Model
 
     public function activityType()
     {
-        return $this->hasOne(ActivityType::class);
+        return $this->belongsTo(ActivityType::class);
     }
 
     public function field()
