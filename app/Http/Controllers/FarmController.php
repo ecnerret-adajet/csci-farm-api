@@ -58,4 +58,21 @@ class FarmController extends Controller
 
         return response()->json(['message' => 'Farm deleted successfully']);
     }
+
+    public function assignedFarms($company_id){
+        $farms = Farm::with('company')->where('company_id', $company_id)->get();
+        
+        if(!$farms){
+            return response()->json(['message' => 'Farms not found'], 404);
+        }
+
+        $farmsCount = count($farms);
+
+        return response()->json(
+            [
+                'farms' => $farms,
+                'farmsCount' => $farmsCount
+            ], 200
+        );
+    }
 }

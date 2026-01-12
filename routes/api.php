@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/farms/edit/{id}', [FarmController::class, 'edit']);
     Route::put('/farms/{id}', [FarmController::class, 'update']);
     Route::delete('/farms/{id}', [FarmController::class, 'destroy']);
+    Route::get('/farms/assigned/{company_id}', [FarmController::class, 'assignedFarms']);
 
     Route::get('/fields', [FieldController::class, 'index']);
     Route::get('/fields/{id}', [FieldController::class, 'show']);

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('user_id');
             $table->date('date');
             $table->integer('mandays_accomplished');
-            $table->string('image_url');
+            $table->string('image_url')->nullable();
             $table->string('remarks')->nullable();
             $table->timestamps();
             $table->softDeletes();

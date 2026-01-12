@@ -16,17 +16,25 @@ class AppLoginController extends Controller
 
         // create token
         if (Auth::attempt($credentials)) {
-            $user = Auth::user(); 
+            $user = Auth::user();
 
             $tokenName = config('app.name');
 
             $token = $user->createToken($tokenName)->plainTextToken;
+            $userData = [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'role' => $user->role,
+                'company_id' => $user->company_id
+            ];
 
             return response()->json([
+                'user' => $userData,
                 'access_token' => $token,
                 'token_type' => 'Bearer',
             ], 200);
-        }
+        } 
         
         return response()->json(['error' => 'Unauthorized'], 401);
     }
